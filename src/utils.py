@@ -187,6 +187,25 @@ def index2emotion(index=0, kind='cn'):
     else:
         return list(emotions.values())[index]
 
+def results_to_zhuanzhu(results):
+    con = [
+        0.059785,
+        0.027026,
+        0.039953,
+        0.368842,
+        0.059785,
+        0.260724,
+        0.183885,
+    ]
+    re = 0.0
+    result_list = results.tolist()[0]
+    # print(type(result_list))
+    # print(len(result_list), len(con))
+    for index in range(len(con)):
+        # print(type(result_list[index]))
+        # print(result_list[0], con[index])
+        re = re + result_list[index] * con[index]
+    return re
 
 def cv2_img_add_text(img, text, left, top, text_color=(0, 255, 0), text_size=20):
     """
